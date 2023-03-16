@@ -15,24 +15,18 @@
         <main>
             <div class="container">
                 <h1>My Contacts</h1>
-                <div class="buttons">
-                    <select id="shape-type">
-                        <option value="circle">Circle</option>
-                        <option value="square">Square</option>
-                    </select>
-                    <select id="shape-color">
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                        <option value="orange">Orange</option>
-                        <option value="pink">Pink</option>
-                        <option value="purple">Purple</option>
-                    </select>
-                    <button id="shape-create">Create</button>
+                <div class="inputs">
+                    <input type="text" name="contact-info" id="contact-info"
+                    placeholder="Contact info (name, city, email)">
+                    <button id="contact-add">Add</button>
                 </div>
+                <p class="alert-txt">Example Alert</p>
                 <div class="grid">
 
                 </div>
-                <p class="shape-txt"></p>
+                <div class="contact-count">
+                    Contacts: 0
+                </div>
             </div>
         </main>
     </body>

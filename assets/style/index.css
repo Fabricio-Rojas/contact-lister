@@ -7,7 +7,7 @@
 
 body {
     background-color: #1a1d28;
-    padding-top: 100px;
+    padding-top: 75px;
 }
 
 h1 {
@@ -16,22 +16,16 @@ h1 {
     font-weight: 300;
 }
 
-.buttons {
+.inputs {
     margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 
-button {
-    font-size: 17px;
-    text-align: left;
-    color: #fff;
-}
-
-#shape-type, #shape-color {
+#contact-info {
     color: #fff;
     height: 40px;
-    width: 200px;
+    width: 420px;
     padding: 5px 10px;
     margin: 0 10px;
     border-radius: 5px;
@@ -39,61 +33,67 @@ button {
     cursor: pointer;
 }
 
-option {
-    color: #000;
-}
-
-#shape-create {
+#contact-add {
     text-align: center;
     height: 40px;
     width: 100px;
     padding: 5px 10px;
     margin: 0 10px;
     border-radius: 5px;
-    background-color: #FF7B00;
+    background-color: #009D5D;
+    font-size: 17px;
+    color: #fff;
     cursor: pointer;
 }
 
-#shape-create:active {
+#contact-add:active {
     border: 2px solid #000;
 }
 
-.grid {
-    height: 360px;
-    width: 540px;
-    padding: 5px;
-    margin: 25px auto 0;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.15);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 5px 5px;
-    grid-auto-flow:row;
-    transform: rotate(180deg) scaleX(-1);
-}
-
-.circle {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.square {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.circle:active, .square:active {
-    border: 1px solid #000;
-}
-
-.shape-txt {
+.alert-txt {
+    height: 20px;
     margin-top: 20px;
     text-align: center;
     color: #fff;
     font-size: 20px;
+}
+
+.grid {
+    height: 350px;
+    width: 1050px;
+    margin: 25px auto 0;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.15);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+}
+
+.contact {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact:first-child {
+    border: 1px solid #009D5D;
+
+}
+
+.contact:active {
+    border: 1px solid #D44C4E;
+}
+
+.contact-count {
+    margin: 40px auto 0;
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #800;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
 }
