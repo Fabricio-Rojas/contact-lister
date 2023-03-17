@@ -52,6 +52,11 @@ addBtn.addEventListener('click', function() {
 
     const contactValues = contactInp.value.split(",");
 
+    if (contactValues.length != 3) {
+        alertText.innerText = 'Please enter valid amount of inputs';
+        return;
+    }
+
     const contactName = contactValues[0];
     const contactCity = contactValues[1];
     const contactEmail = contactValues[2];
