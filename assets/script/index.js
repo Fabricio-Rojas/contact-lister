@@ -2,70 +2,84 @@
 
 // Declaring Elements
 
-const createBtn = document.querySelector('#shape-create');
-const shapeSelect = document.querySelector('#shape-type');
-const colorSelect = document.querySelector('#shape-color');
+const addBtn = document.querySelector('#contact-add');
+const contactInp = document.querySelector('#contact-info');
+const alertText = document.querySelector('.alert-txt');
 
 const grid = document.querySelector('.grid');
-const textDisplay = document.querySelector('.shape-txt');
+const contactCount = document.querySelector('.contact-count');
 
 // Class Definition
 
-class Shape { 
+class Contact { 
     #name;
-    #color;
-    constructor(name, color) {
+    #city;
+    #email;
+    constructor(name, city, email) {
         this.name = name;
-        this.color = color;
+        this.city = city;
+        this.email = email;
     };
 
     set name(name) {
         this.#name = name;
     };
 
-    set color(color) {
-        this.#color = color;
+    set city(city) {
+        this.#city = city;
+    };
+
+    set email(email) {
+        this.#email = email;
     };
 
     get name() {
         return this.#name;
     };
 
-    get color() {
-        return this.#color
+    get city() {
+        return this.#city;
     };
 
-    getInfo() {
-        return `${this.#color} ${this.#name}`
+    get email() {
+        return this.#email; 
     };
 };
 
 // Main function
-let shapeList = [];
-let divCount = 0;
-createBtn.addEventListener('click', function() {
-    divCount++;
-    if (divCount >= 25) {
-        textDisplay.innerText = 'Reached max amount of shapes';
+let contactList = [];
+addBtn.addEventListener('click', function() {
+
+    const contactValues = contactInp.value.split(", ");
+
+    const contactName = contactValues[0];
+    const contactCity = contactValues[1];
+    const contactEmail = contactValues[2];
+
+    const validMail = /^.*@.*\.(com|ca)$/;
+    const valuesValid = (
+        contactName.length > 0 && 
+        contactCity.length > 0 && 
+        validMail.test(contactEmail)
+    );
+
+    if (!valuesValid) {
+        alertText.innerText = 'Please write valid inputs';
         return;
     };
+    alertText.innerText = '';
 
-    const newShape = new Shape(shapeSelect.value, colorSelect.value);
-    shapeList.push(newShape);
+    const newContact = new Contact(contactName, contactCity, contactEmail);
+    contactList.push(newContact);
 
     const newDiv = document.createElement('div');
-    newDiv.classList.add(newShape.name);
-    newDiv.style.backgroundColor = checkColor(newShape.color);
+    newDiv.classList.add('contact');
     newDiv.onclick = function() {
-        textDisplay.innerText = `Unit ${shapeList.indexOf(newShape) + 1}: ${newShape.getInfo()}`
+        
     }; 
     grid.append(newDiv);
 });
 
-function checkColor(color) {
-    if (color == 'blue') return '#09f';
-    if (color == 'green') return '#9f0';
-    if (color == 'orange') return '#f90';
-    if (color == 'pink') return '#f09';
-    if (color == 'purple') return '#90f';
-};
+// function listContacts() {
+//     contactList.forEach(contct => )
+// };
