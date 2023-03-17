@@ -50,13 +50,13 @@ class Contact {
 let contactList = [];
 addBtn.addEventListener('click', function() {
 
-    const contactValues = contactInp.value.split(", ");
+    const contactValues = contactInp.value.split(",");
 
     const contactName = contactValues[0];
     const contactCity = contactValues[1];
     const contactEmail = contactValues[2];
 
-    const validMail = /^.*@.*\.(com|ca)$/;
+    const validMail = /^.*@.*\.([a-z]{2}|[a-z]{3})$/;
     const valuesValid = (
         contactName.length > 0 && 
         contactCity.length > 0 && 
@@ -75,11 +75,29 @@ addBtn.addEventListener('click', function() {
     const newDiv = document.createElement('div');
     newDiv.classList.add('contact');
     newDiv.onclick = function() {
-        
-    }; 
-    grid.append(newDiv);
+        newDiv.parentNode.removeChild(newDiv);
+        contactList.splice(
+            contactList.indexOf(newContact), contactList.indexOf(newContact)
+        );
+        contactCount.innerText = `Contacts: ${grid.childElementCount}`;
+    };
+    listContacts(newContact, newDiv);
+
+    grid.insertBefore(newDiv, grid.firstChild);
+
+    contactCount.innerText = `Contacts: ${grid.childElementCount}`;
 });
 
-// function listContacts() {
-//     contactList.forEach(contct => )
-// };
+function listContacts(contact, div) {
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
+
+    p1.innerHTML = `<b>Name:</b> ${contact.name}`
+    p2.innerHTML = `<b>City:</b> ${contact.city}`
+    p3.innerHTML = `<b>Email:</b> ${contact.email}`
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+    div.appendChild(p3);
+};
